@@ -10,17 +10,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.demo.Helpers.PasswordGenerator;
+
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final PasswordGenerator passwordGenerator;
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     @Autowired
-    public UserService (UserRepository userRepository){
+    public UserService (UserRepository userRepository , PasswordGenerator passwordGenerator){
         this.userRepository= userRepository;
+        this.passwordGenerator= passwordGenerator;
     }
 
     @Transactional
     public UserDTO createUser (UserDTO userDTO){
+        try {
+            userDTO.setOccupation(this.passwordGenerator.generatePassword());
+            User userInserted = this.userRepository.save(User.fromDTO(userDTO));
+            return UserDTO.fromEntity(userInserted);
+        } catch (Exception e) {
+           logger.error(e.getMessage(), e);
+           throw new RuntimeException(e);
+        }
+    }
+
+    @Transactional
+    public UserDTO signUpUserService (UserDTO userDTO){
         try {
             User userInserted = this.userRepository.save(User.fromDTO(userDTO));
             return UserDTO.fromEntity(userInserted);

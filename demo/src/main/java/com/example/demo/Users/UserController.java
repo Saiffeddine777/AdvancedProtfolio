@@ -41,6 +41,18 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("failed to create The User" + e.getMessage());           
         }
     }
+    @PostMapping("/signup")
+    public ResponseEntity<?> signUpUserController(@RequestBody UserDTO userDTO){
+        try {
+            UserDTO userDTOInserted = this.userService.signUpUserService(userDTO);
+            return  ResponseEntity.status(HttpStatus.CREATED).body(userDTOInserted);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("failed to create The User" + e.getMessage());           
+        }
+    }
+
+    
 
     @GetMapping("/all")
     public ResponseEntity<?> getUsersController(){

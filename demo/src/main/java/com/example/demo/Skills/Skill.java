@@ -43,6 +43,9 @@ public class Skill {
     @Column(name = "nature" , nullable = false)
     @Enumerated(EnumType.STRING)
     private NatureEnum nature;
+    
+    @Column(name = "grade" , nullable = false)
+    private int grade;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "level" , nullable = false)
@@ -53,8 +56,9 @@ public class Skill {
             skillDTO.getId(),
             skillDTO.getName(),
             skillDTO.getNature(),
+            skillDTO.getGrade(),
             skillDTO.getLevel()
         );
     }
     
-}
+}   

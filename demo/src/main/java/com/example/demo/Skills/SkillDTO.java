@@ -19,6 +19,7 @@ public class SkillDTO {
     private long id;
     private String name ;
     private NatureEnum nature;
+    private int grade;
     private LevelEnum level; 
 
     public static SkillDTO fromEntity (Skill skill){
@@ -26,6 +27,7 @@ public class SkillDTO {
             skill.getId(),
             skill.getName(),
             skill.getNature(),
+            skill.getGrade(),
             skill.getLevel()
         );
     }
