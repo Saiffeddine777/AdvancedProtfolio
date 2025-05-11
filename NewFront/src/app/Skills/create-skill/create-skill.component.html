@@ -1,0 +1,29 @@
+<div class="contact">
+  <div class="form">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" placeholder="EX: React" (change)="handleNameChange($event)"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nature</mat-label>
+      <mat-select [(ngModel)]="skillToInsert.nature">
+        <mat-option *ngFor="let nature of natures" [value]="nature">{{nature}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Grade</mat-label>
+      <input matInput type="number" placeholder="Ex: 12" (change)="handleGradeChange($event)" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Level</mat-label>
+      <mat-select [(ngModel)]="skillToInsert.level">
+        <mat-option *ngFor="let level of levels" [value]="level">{{level}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button (click)="handleSubmitSkill()" mat-raised-button color="primary" class="submit-button">Submit</button>
+  </div>
+</div>

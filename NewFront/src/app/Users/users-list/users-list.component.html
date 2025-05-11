@@ -1,0 +1,11 @@
+<div class="user-card-container">
+    <mat-card *ngFor="let user of users" class="user-card">
+      <mat-card-header class="user-card-header">
+        {{ user.firstName }}
+      </mat-card-header>
+      <mat-card-content class="user-card-content">
+        {{ user.emailAddress }}
+      </mat-card-content>
+    <app-delete-user [id]="user.id"/>
+    </mat-card>
+  </div>

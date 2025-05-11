@@ -1,0 +1,38 @@
+.contact {
+    padding: 2%;
+    margin: 5% auto; /* Centers the container and avoids large margins */
+    max-width: 600px; /* Prevents it from becoming too wide */
+    width: 90%; /* Makes it responsive */
+    background-color: #68c3be;
+    border-radius: 16px; /* fixed from '2dvi' to a valid value */
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* gap: 16px; */
+  }
+  
+  mat-form-field {
+    width: 100%; /* Ensures form fields don't overflow */
+  }
+  
+  .submit-button {
+    width: 150px;
+    background-color: aliceblue;
+    margin: 0 auto; /* Centers the button */
+  }
+  .snackbar-success {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  
+  .snackbar-failure {
+    background-color: #f44336;
+    color: #fff;
+  }
+  

@@ -1,0 +1,32 @@
+<div class="contact">
+    <div class="form">
+        <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input matInput  type="text" placeholder="Ex: John" value="{{signedUpUser.firstName}}" (change)="handleChangePassword($event)"/>
+         </mat-form-field>
+         <mat-form-field >
+            <mat-label>Last Name</mat-label>
+            <input matInput  type="text" placeholder="Ex: Doe" value="{{signedUpUser.lastName}}" (change)="handleChangePassword($event)"  />
+         </mat-form-field>
+         <mat-form-field >
+            <mat-label>Email</mat-label>
+            <input matInput  type="text" placeholder="Ex: johndoe@example.com" value="{{signedUpUser.emailAddress}}" (change)="handleChangePassword($event)" />
+         </mat-form-field>
+         <mat-form-field >
+            <mat-label>Phone Number</mat-label>
+            <input matInput  type="text" placeholder="Ex: +216 21222222" value="{{signedUpUser.phoneNumber}}" (change)="handleChangePassword($event)" />
+         </mat-form-field>
+         <mat-form-field >
+            <mat-label>Occupation</mat-label>
+            <input matInput  type="text" placeholder="Ex: Hr Manager" value="{{signedUpUser.occupation}}" (change)="handleChangePassword($event)" />
+         </mat-form-field> 
+         <mat-form-field >
+            <mat-label>Password</mat-label>
+            <input matInput  type="password"  placeholder="Type a Password" value="{{signedUpUser.password}}" (change)="handleChangePassword($event)"/>
+         </mat-form-field>         <mat-form-field >
+            <mat-label>Confirm Password</mat-label>
+            <input matInput  type="password"  placeholder="Confirm a Password"value="{{signedUpUser.confirmPassword}}" (change)="handleChangePassword($event)" />
+         </mat-form-field>
+         <button mat-button class="submit-button" (click)="handleSubmitSignupUser()">Submit</button>
+    </div>
+</div>

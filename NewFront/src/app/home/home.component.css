@@ -1,0 +1,43 @@
+.container-div {
+  margin: 5%;
+  padding: 2%;
+  background-color: #1e1e2f;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.intro-text {
+  font-size: 1.2rem;
+  color: #d4d4d4;
+  margin-bottom: 8px;
+}
+
+.name-section {
+  font-size: 2.5rem;
+  color: #68c3be;
+  font-weight: bold;
+}
+
+.title-section {
+  font-size: 1.8rem;
+  color: #cccccc;
+  margin-top: 4px;
+}
+
+.description-div {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #1b1b3f;
+  border-radius: 8px;
+}
+
+.description-div p {
+  font-size: 1rem;
+  color: #d9dbdb;
+  line-height: 1.6;
+}
+
+.tech-stack {
+  color: #68c3be;
+  font-weight: bold;
+}

@@ -1,0 +1,10 @@
+<mat-toolbar class="navdiv" color="primary">
+    <div class="menubuttons">
+      <button mat-button (click)="navigateToFromMenu($event)" *ngFor="let item of navMenuItems">{{ item }}</button>
+    </div> 
+    <span class="spacer"></span>
+    <div class="actionbuttons">
+      <button mat-raised-button  color="accent" (click)="navigateToFromMenu($event)" *ngFor="let item of buttonTitles">{{ item }}</button>
+    </div>
+  </mat-toolbar>
+  

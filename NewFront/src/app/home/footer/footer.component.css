@@ -1,0 +1,14 @@
+.footercontainer{
+    display: flex;
+    justify-content: center;
+
+}
+.footerclass{
+    margin-top: 4%;
+    display: flex;
+    gap: 15px;
+}
+
+.footerclass mat-icon{
+    fill: #68c3be;
+}

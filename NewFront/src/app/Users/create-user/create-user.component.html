@@ -1,0 +1,24 @@
+<div class="formclass">
+    <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="Ex: saiffeddine" value={{createUserState.firstName}} (input)="handleFirstNameChange($event)">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Ex: Zouaghi" value={{createUserState.lastName}} (input)="handleLastNameChange($event)">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Email adress</mat-label>
+        <input matInput placeholder="Ex: Email" value={{createUserState.emailAddress}} (input)="handleEmailAddressChange($event)">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Phone Number</mat-label>
+        <input matInput placeholder="Ex: Phone Number" value={{createUserState.phoneNumber}} (input)="handlePhoneNumberChange($event)">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Occupation</mat-label>
+        <input matInput placeholder="Ex: Occupation" value={{createUserState.occupation}} (input)="handleOccupationChange($event)">
+    </mat-form-field>
+
+    <button mat-button (click)="handleSubmitUser()">Submit User</button>
+</div>

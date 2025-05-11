@@ -1,0 +1,17 @@
+<div class="contact">
+    <div class="form">
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput  type="email" placeholder="Submit Email" (change)="handleFieldsChange($event)"/>
+         </mat-form-field>
+         <mat-form-field >
+            <mat-label>Subject</mat-label>
+            <input matInput  type="text" placeholder="Submit Subject" (change)="handleFieldsChange($event)"/>
+         </mat-form-field>
+         <mat-form-field >
+            <mat-label>Text</mat-label>
+            <textarea matInput  type="text" class="text-area" placeholder="Submit Text" (change)="handleFieldsChange($event)"></textarea>
+         </mat-form-field>
+         <button mat-button (click)="handleSubmitEmail()" class="submit-button">Submit Email</button>
+    </div>
+</div>
