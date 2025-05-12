@@ -10,6 +10,7 @@ import { CommonModule, NgFor } from '@angular/common';
 import { envVar } from '../../env';
 import { FormsModule } from '@angular/forms';
 import {MatSnackBar , MatSnackBarModule, MatSnackBarRef, TextOnlySnackBar} from "@angular/material/snack-bar"
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-skill',
@@ -30,7 +31,7 @@ import {MatSnackBar , MatSnackBarModule, MatSnackBarRef, TextOnlySnackBar} from 
 })
 export class CreateSkillComponent {
 
-  constructor(private snackbar : MatSnackBar){
+  constructor(private snackBar : MatSnackBar , private router :Router){
 
   }
   natures : string[] =["FrontEnd","BackEnd","Infrastructure","Database"]
@@ -70,10 +71,40 @@ export class CreateSkillComponent {
         this.skillToInsert
       );
       if (response?.data?.id) {
-        console.log('The Skill has been inserted');
+          this.snackBar.open("the Skill has been inserted",'Close',{
+          duration:4000,
+          panelClass : ['snackbar-failure']
+        })
+
+          this.router.navigate(["/skills"])
+       
       }
     } catch (error) {
-      console.log(error);
+     if (axios.isAxiosError(error)) {
+        const log :string =error.response?.data?.message ||
+        error.message ||
+        'Unknown error'
+        console.log('Axios Error : ' + log);
+        this.snackBar.open(log,'Close',{
+          duration:4000,
+          panelClass : ['snackbar-failure']
+        })
+        
+      } else if (error instanceof Error) {
+        console.log('Error' + error.message);
+        this.snackBar.open(error.message,'Close',{
+          duration:4000,
+          panelClass : ['snackbar-failure']
+        })
+      } else {
+        const log:string  = 'Unexpected Error has happened'
+        console.log(log);
+        this.snackBar.open(log,'Close',{
+          duration:4000,
+          panelClass : ['snackbar-failure']
+        })
+      }
+      
     }
   }
 }

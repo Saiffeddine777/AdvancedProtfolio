@@ -1,1 +1,17 @@
+
+<div class = "top-container"> 
 <button mat-button class="addskillbutton" (click)="navigateToCreateASkill()">Create a skill</button>
+<div class="user-card-container">
+  <mat-card *ngFor="let skill of skills" class="user-card">
+    <div class="user-card-header">{{ skill.name }}</div>
+    <div class="user-card-content">
+      <p><strong>Nature:</strong> {{ skill.nature }}</p>
+      <p><strong>Level:</strong> {{ skill.level }}</p>
+      <p><strong>Grade:</strong> {{ skill.grade }}</p>
+    </div>
+    <app-delete-one-skill [id]="skill.id" (skillDeleted)="handleSkillDeleted($event)"></app-delete-one-skill>
+  </mat-card>
+</div>
+<div style="text-align:center; margin-top: 24px;">
+</div>
+</div>

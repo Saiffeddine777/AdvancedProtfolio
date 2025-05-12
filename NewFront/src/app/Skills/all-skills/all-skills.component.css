@@ -1,6 +1,53 @@
 .addskillbutton{
-    float: right;
+
     margin-top: 5%;
-    margin-right: 5%;
+    margin-left: 5%;
     background-color: beige;
+    width: 10%;
+}
+
+.top-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.user-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  padding: 16px;
+  background-color: #68c3be;
+  margin : 10%
+
+}
+
+.user-card {
+  width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: white;
+}
+
+.user-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.user-card-header {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  padding: 16px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.user-card-content {
+  font-size: 16px;
+  color: #555;
+  padding: 16px;
+  text-align: center;
 }
