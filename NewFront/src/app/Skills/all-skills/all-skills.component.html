@@ -3,7 +3,7 @@
 <button mat-button class="addskillbutton" (click)="navigateToCreateASkill()">Create a skill</button>
 <div class="user-card-container">
   <mat-card *ngFor="let skill of skills" class="user-card">
-    <div class="user-card-header">{{ skill.name }}</div>
+    <div class="user-card-header"  (click)="navigateToOneSkill(skill.id)">{{ skill.name }}</div>
     <div class="user-card-content">
       <p><strong>Nature:</strong> {{ skill.nature }}</p>
       <p><strong>Level:</strong> {{ skill.level }}</p>

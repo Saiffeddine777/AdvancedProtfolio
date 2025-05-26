@@ -1,0 +1,10 @@
+button[mat-button] {
+  color: #68c3be;
+  border: 1px solid #68c3be;
+  margin-left: 10px;
+  transition: background-color 0.3s;
+}
+
+button[mat-button]:hover {
+  background-color: rgba(104, 195, 190, 0.1);
+}

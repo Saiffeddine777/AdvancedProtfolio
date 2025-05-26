@@ -1,13 +1,8 @@
 import { User } from "../../Types/UserType";
+import { StatusType } from "../../Types/StatusType";
 
 
 
-export enum StatusType {
-    Failure = 'Failure',
-    Success = 'Success',
-    StandBy = 'StandBy',
-    Pending = 'Pending',
-}
 export type UsersFetchObjectType ={
     userList : User [],
     status : StatusType

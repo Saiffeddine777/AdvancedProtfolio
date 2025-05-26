@@ -43,6 +43,15 @@ public class SkillService {
             throw new RuntimeException(e.getMessage());
         }
     }
+        @Transactional
+    public List<SkillSummaryProjection> findAllTheSkillsWithoutDescriptionService (){
+        try {
+            return this.skillRepository.findAllProjectedBy();
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 
     @Transactional
     public Optional<SkillDTO> findOneSkillService (Long id){
@@ -85,6 +94,9 @@ public class SkillService {
                 }
                 if (data.getNature() != null && (!data.getNature().equals(skillToUpdateDTO.getNature()))){
                     skillToUpdateDTO.setNature(data.getNature());
+                }  
+                if (data.getDescription() != null && (!data.getDescription().equals(skillToUpdateDTO.getDescription()))){
+                    skillToUpdateDTO.setDescription(data.getDescription());
                 }  
                 this.skillRepository.save(Skill.fromDTO(skillToUpdateDTO));
                 return "The skill has been updated";

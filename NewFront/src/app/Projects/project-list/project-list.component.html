@@ -1,0 +1,19 @@
+
+
+<div class = "top-container"> 
+<button mat-button class="createproject" (click)="navigateToCreateProject()">Create project</button>
+<div class="user-card-container">
+  <mat-card *ngFor="let project of projects" class="user-card">
+    <div class="user-card-header"  (click)="navigateToOneProject(project.id)">{{ project.name }}</div>
+    <div class="user-card-content">
+      <p><strong>Repo:</strong> {{ project.repoUrl }}</p>
+      <p><strong>Live Url:</strong> {{ project.liveUrl }}</p>
+      <p><strong>Tech Stack:</strong> {{ project.techStack }}</p>
+    </div>
+    <!-- <app-delete-one-skill [id]="skill.id" (skillDeleted)="handleProjectDeleted($event)"></app-delete-one-skill> -->
+     <app-delete-project [id]="project.id" (eventEmitter)="handleProjectDeleted($event)"></app-delete-project>
+  </mat-card>
+</div>
+<div style="text-align:center; margin-top: 24px;">
+</div>
+</div>

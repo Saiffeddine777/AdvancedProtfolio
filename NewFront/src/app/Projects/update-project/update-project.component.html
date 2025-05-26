@@ -1,0 +1,27 @@
+<div class="containerofcontainer">
+     <div class="container">  
+      <h2>Add a Project</h2>
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" placeholder={{this.existingProject.name}} (change)="handleNameChange($event)" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>description</mat-label>
+      <textarea matInput type="text" placeholder={{this.existingProject.description}} (change)="handleDescriptionChange($event)" ></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Git hub Repoo url</mat-label>
+      <input matInput type="text" placeholder={{this.existingProject.repoUrl}} (change)="handleRepoUrlChange($event)" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Live url</mat-label>
+      <input matInput type="text" placeholder={{this.existingProject.liveUrl}} (change)="handleLiveUrlChange($event)" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Tech Stack</mat-label>
+      <input matInput type="text" placeholder={{this.existingProject.techStack}} (change)="handleTechStackChange($event)" />
+    </mat-form-field>
+    <button mat-button class="submit-button" (click)="handleSubmitUpdateProject() ">Submit Update</button>
+    </div>
+ </div>
+  

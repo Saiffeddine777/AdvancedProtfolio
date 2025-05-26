@@ -1,0 +1,20 @@
+.containerofcontainer {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;      /* Vertical centering */
+    justify-content: center;  /* Horizontal centering */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    max-width: 600px;
+    padding: 0 20%;
+}
+
+.submit-button {
+    background-color: antiquewhite;
+    width: 60%;
+    margin: 24px auto 0 auto;
+}

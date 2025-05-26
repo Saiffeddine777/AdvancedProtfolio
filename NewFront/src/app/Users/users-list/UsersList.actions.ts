@@ -1,6 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 import { User } from "../../Types/UserType";
-import { StatusType } from "./UsersList.state";
+import { StatusType } from "../../Types/StatusType";
 
 
 export const loadUsers = createAction(

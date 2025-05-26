@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../../Types/UserType';
-import { StatusType } from './UsersList.state';
 import { Store } from '@ngrx/store';
 import { selectFetchError, selectFetchStatus, selectUserList } from './UsersList.selectors';
 import { loadUsers } from './UsersList.actions';
 import {MatCardModule} from '@angular/material/card';
 import { NgFor } from '@angular/common';
 import { DeleteUserComponent } from '../delete-user/delete-user.component';
+import { StatusType } from '../../Types/StatusType';
 
 @Component({
   selector: 'app-users-list',

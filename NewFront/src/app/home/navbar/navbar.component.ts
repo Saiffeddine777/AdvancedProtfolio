@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-  navMenuItems : string [] = ["CV","projects","Skills","Contact"] 
+  navMenuItems : string [] = ["CV","Projects","Skills","Contact" , "Emails" , "Users"] 
   buttonTitles : string [] = ["Sign-up", "Log-in"]
 
   constructor(private router :Router){}
@@ -28,6 +28,15 @@ export class NavbarComponent {
       case "Skills":
         this.router.navigate(['/skills'])
         break;
+      case "Projects":
+        this.router.navigate(['/projects'])
+        break;
+            case "Emails":
+        this.router.navigate(['/allemails'])
+        break;
+        case "Users":
+          this.router.navigate(['allusers'])
+          break;
       default:
         break;
     }

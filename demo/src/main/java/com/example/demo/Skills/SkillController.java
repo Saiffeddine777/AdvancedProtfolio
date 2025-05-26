@@ -51,6 +51,16 @@ public class SkillController {
          return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("failed to fetch the Skills :" + e.getMessage());
       }
     } 
+        @GetMapping("/allnodescription")
+    public ResponseEntity<?> getAllSkillsWithoutDescriptionController(){
+      try {
+         List<SkillSummaryProjection> skills = this.skillService.findAllTheSkillsWithoutDescriptionService();
+         return ResponseEntity.status(HttpStatus.OK).body(skills);
+      } catch (Exception e) {
+         logger.error(e.getMessage(), e);
+         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("failed to fetch the Skills :" + e.getMessage());
+      }
+    } 
 
     @GetMapping("/one/{id}")
     public ResponseEntity<?> getOneSkillController(@PathVariable("id") Long id){

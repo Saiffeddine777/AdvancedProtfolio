@@ -8,4 +8,5 @@ export type Skill =  {
    nature : TechNature,
    level : Level
    grade :number
+   description : string |undefined
 }

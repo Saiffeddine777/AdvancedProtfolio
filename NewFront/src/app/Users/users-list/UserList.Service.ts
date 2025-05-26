@@ -12,13 +12,9 @@ export class UserListService {
     private readonly fetchUserListEndPoint :string = `${envVar}/api/users/all`;  
 
     constructor(){}
-
     getUsers(): Observable<User[]> {
         return from(
             axios.get<User[]>(this.fetchUserListEndPoint).then((response) => response.data)
         );
     }
-    
-
-
 } 

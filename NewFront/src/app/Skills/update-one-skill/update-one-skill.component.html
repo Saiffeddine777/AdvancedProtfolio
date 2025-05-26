@@ -1,1 +1,34 @@
-<p>update-one-skill works!</p>
+<div class="contact">
+  <div class="form">
+    <h2 class="title">Update Skill {{placeholderSkill.name}}</h2>
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" placeholder={{placeholderSkill.name}} (change)="handleNameChange($event)" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Nature</mat-label>
+      <mat-select [(ngModel)]="placeholderSkill.nature">
+        <mat-option *ngFor="let nature of natures" [value]="nature">{{nature}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Grade</mat-label>
+      <input matInput type="number" placeholder={{placeholderSkill.grade}} (change)="handleGradeChange($event)" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Level</mat-label>
+      <mat-select [(ngModel)]="placeholderSkill.level">
+        <mat-option *ngFor="let level of levels" [value]="level">{{level}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput type="text" placeholder={{placeholderSkill.description?.substring(0,10)?.concat(etc)}} (change)="handleDescrptionChange($event)" ></textarea>
+    </mat-form-field>
+
+    <button (click)="handleSubmitUpdate()" mat-raised-button color="primary" class="submit-button">Submit</button>
+  </div>
+</div>

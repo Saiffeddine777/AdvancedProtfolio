@@ -26,7 +26,7 @@ export class AllSkillsComponent implements OnInit {
 
   async handleFetchSkills():Promise<void> {
     try {
-      const response : AxiosResponse<Skill[]> = await axios.get(`${envVar}/api/skills/all`)
+      const response : AxiosResponse<Skill[]> = await axios.get(`${envVar}/api/skills/allnodescription`)
       if (response?.data.length){
         this.skills = response.data
       }
@@ -45,8 +45,8 @@ export class AllSkillsComponent implements OnInit {
   }
 
 
-  navigateToOneSkill(id:number): void{
-    this.router.navigate(["oneskill"],{state:{id :id}})
+  navigateToOneSkill(id:number|undefined): void{
+    this.router.navigate(["/oneskill"],{state:{id :id}})
   }
 
   handleSkillDeleted (deletedId :number |undefined):void{

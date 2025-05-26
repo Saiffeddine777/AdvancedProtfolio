@@ -7,6 +7,8 @@ import { provideEffects } from '@ngrx/effects';
 import { usersListReducer } from './Users/users-list/UsersList.Reducer';
 import { UserListEffect } from './Users/users-list/UsersList.effect';
 import { provideHttpClient } from '@angular/common/http';
+import { AllEmailsEffect } from './Emails/all-emails/AllEmails.effect';
+import { allEmailsReducer } from './Emails/all-emails/AllEmails.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,10 +16,12 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), 
     provideHttpClient(),
     provideStore({
-        usersList :usersListReducer
+        usersList :usersListReducer,
+        allEmails : allEmailsReducer
     }), 
     provideEffects([
-      UserListEffect
+      UserListEffect,
+      AllEmailsEffect
     ])
   ]
 };

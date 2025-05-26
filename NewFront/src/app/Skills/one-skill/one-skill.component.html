@@ -1,1 +1,16 @@
-<p>one-skill works!</p>
+<div class="masterdiv" *ngIf="skill">
+  <mat-card class="user-card">
+    <mat-card-header class="user-card-header">
+      <mat-card-title>{{ skill.name }}</mat-card-title>
+      <mat-card-subtitle>{{ skill.nature }} | {{ skill.level }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="user-card-content">
+      <p><strong>Grade:</strong> {{ skill.grade }}</p>
+      <p class="description">{{ skill.description }}</p>
+    </mat-card-content>
+    <mat-card-footer class="card-footer">
+      <button mat-button (click)="navigateToUpadteSkill()"> Update Skill</button>
+    </mat-card-footer>
+  </mat-card>
+  <button mat-button class="return-button" (click)="navigateBackToSkills()">Back to Skills</button>
+</div>

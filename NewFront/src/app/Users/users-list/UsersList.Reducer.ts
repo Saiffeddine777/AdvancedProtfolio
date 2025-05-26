@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { StatusType, usersList } from './UsersList.state';
+import { usersList } from './UsersList.state';
 import {
   loadUsers,
   loadUsersSuccess,
@@ -7,6 +7,7 @@ import {
   updatFetchUsersStatus,
   resetUsersFailure,
 } from './UsersList.actions';
+import { StatusType } from '../../Types/StatusType';
 
 export const usersListReducer = createReducer(
   usersList, // Initial state

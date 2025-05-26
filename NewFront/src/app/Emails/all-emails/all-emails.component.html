@@ -1,0 +1,22 @@
+<div *ngIf="emails?.length">
+  <div *ngFor="let email of emails">
+    <mat-card class="email-card">
+      <mat-card-header>
+        <div mat-card-avatar class="email-avatar">
+          <mat-icon>email</mat-icon>
+        </div>
+        <mat-card-title>{{ email.subject }}</mat-card-title>
+        <mat-card-subtitle>{{ email.senderEmail }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>{{ email.text }}</p>
+      </mat-card-content>
+
+      <mat-card-actions align="end">
+        <button mat-button color="primary">Reply</button>
+        <app-delete-email [id]="email.id" (deletedEmail)="handleFilterDeltedEmail($event)"></app-delete-email>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

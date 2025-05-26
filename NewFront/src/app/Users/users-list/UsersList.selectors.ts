@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { StatusType, UsersFetchObjectType } from './UsersList.state';
-
+import {  UsersFetchObjectType } from './UsersList.state';
+import { StatusType } from '../../Types/StatusType';
 
 // Feature Selector
 export const selectUsersListState = createFeatureSelector<UsersFetchObjectType>('usersList');

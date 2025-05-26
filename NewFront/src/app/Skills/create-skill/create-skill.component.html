@@ -2,7 +2,7 @@
   <div class="form">
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
-      <input matInput type="text" placeholder="EX: React" (change)="handleNameChange($event)"/>
+      <input matInput type="text" placeholder="EX: React" (change)="handleNameChange($event)" />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -22,6 +22,10 @@
       <mat-select [(ngModel)]="skillToInsert.level">
         <mat-option *ngFor="let level of levels" [value]="level">{{level}}</mat-option>
       </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput type="text" placeholder="I leaned ReactJs ..." (change)="handleDescrptionChange($event)" ></textarea>
     </mat-form-field>
 
     <button (click)="handleSubmitSkill()" mat-raised-button color="primary" class="submit-button">Submit</button>

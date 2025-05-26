@@ -11,6 +11,7 @@ import { envVar } from '../../env';
 import { FormsModule } from '@angular/forms';
 import {MatSnackBar , MatSnackBarModule, MatSnackBarRef, TextOnlySnackBar} from "@angular/material/snack-bar"
 import { Router } from '@angular/router';
+import { apiErrorHander } from '../../../Helpers/Errorhandler';
 
 @Component({
   selector: 'app-create-skill',
@@ -41,7 +42,8 @@ export class CreateSkillComponent {
     grade: 0,
     name: '',
     nature: 'Choose',
-    level: 'Choose',
+    level: 'Choose',  
+    description :""
   };
 
   handleGradeChange(e: Event): MatSnackBarRef<TextOnlySnackBar>|void{
@@ -63,6 +65,10 @@ export class CreateSkillComponent {
     const target = e.target as HTMLSelectElement;
     this.skillToInsert.level = target.value as Level;
   }
+  handleDescrptionChange(e: Event): void {
+    const target = e.target as HTMLTextAreaElement;
+    this.skillToInsert.description = target.value;
+  }
 
   async handleSubmitSkill(): Promise<void> {
     try {
@@ -73,38 +79,14 @@ export class CreateSkillComponent {
       if (response?.data?.id) {
           this.snackBar.open("the Skill has been inserted",'Close',{
           duration:4000,
-          panelClass : ['snackbar-failure']
+          panelClass : ['snackbar-success']
         })
 
           this.router.navigate(["/skills"])
        
       }
     } catch (error) {
-     if (axios.isAxiosError(error)) {
-        const log :string =error.response?.data?.message ||
-        error.message ||
-        'Unknown error'
-        console.log('Axios Error : ' + log);
-        this.snackBar.open(log,'Close',{
-          duration:4000,
-          panelClass : ['snackbar-failure']
-        })
-        
-      } else if (error instanceof Error) {
-        console.log('Error' + error.message);
-        this.snackBar.open(error.message,'Close',{
-          duration:4000,
-          panelClass : ['snackbar-failure']
-        })
-      } else {
-        const log:string  = 'Unexpected Error has happened'
-        console.log(log);
-        this.snackBar.open(log,'Close',{
-          duration:4000,
-          panelClass : ['snackbar-failure']
-        })
-      }
-      
+       apiErrorHander(this.snackBar, error) 
     }
   }
 }

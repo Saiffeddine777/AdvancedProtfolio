@@ -7,6 +7,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -50,6 +51,10 @@ public class Skill {
     @Enumerated(EnumType.STRING)
     @Column(name = "level" , nullable = false)
     private LevelEnum level; 
+    
+    @Lob
+    @Column ( name ="description" , columnDefinition = "TEXT" , nullable  = false)
+    private String description;
 
     public static Skill fromDTO (SkillDTO skillDTO){
         return new Skill(
@@ -57,7 +62,8 @@ public class Skill {
             skillDTO.getName(),
             skillDTO.getNature(),
             skillDTO.getGrade(),
-            skillDTO.getLevel()
+            skillDTO.getLevel(),
+            skillDTO.getDescription()
         );
     }
     
