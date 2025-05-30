@@ -12,6 +12,8 @@ import { OneProjectComponent } from './Projects/one-project/one-project.componen
 import { UpdateProjectComponent } from './Projects/update-project/update-project.component';
 import { ALlEmailsComponent } from './Emails/all-emails/all-emails.component';
 import { UsersListComponent } from './Users/users-list/users-list.component';
+import { CreateUserComponent } from './Users/create-user/create-user.component';
+import { LogInComponent } from './Users/log-in/log-in.component';
 
 export const routes: Routes = [
     {path:"" ,component: HomeComponent},
@@ -25,6 +27,8 @@ export const routes: Routes = [
     {path:"createproject" , component : CreateProjectComponent},
     {path:"oneproject" , component : OneProjectComponent},
     {path:"updateproject", component: UpdateProjectComponent},
-    {path :"allemails",component : ALlEmailsComponent},
-    {path:"allusers", component: UsersListComponent}
+    {path:"allemails",component : ALlEmailsComponent},
+    {path:"allusers", component: UsersListComponent},
+    {path:"createuser", component: CreateUserComponent},
+    {path:"signin" , component : LogInComponent}
 ];

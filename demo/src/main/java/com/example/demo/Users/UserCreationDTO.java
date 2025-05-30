@@ -14,24 +14,26 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class UserDTO {
+public class UserCreationDTO {
     private long id;
     private String firstName;
     private String lastName;
     private String phoneNumber; 
     private String emailAddress;
     private String occupation;
+    private String password;
     private Role role;
     
     
-    public static UserDTO fromEntity(User user){
-        return new UserDTO(
+    public static UserCreationDTO fromEntity(User user){
+        return new UserCreationDTO(
            user.getId(),
            user.getFirstName(),
            user.getLastName(),
            user.getPhoneNumber(),
            user.getEmailAddress(),
            user.getOccupation(),
+           user.getPassword(),
            user.getRole()
         );
     }

@@ -6,6 +6,8 @@ import {MatSnackBarModule ,MatSnackBar} from "@angular/material/snack-bar"
 import { User } from '../../Types/UserType';
 import axios, { AxiosResponse } from 'axios';
 import { envVar } from '../../env';
+import { apiErrorHander } from '../../../Helpers/Errorhandler';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,7 +17,7 @@ import { envVar } from '../../env';
 })
 export class SignUpComponent {
 
-  constructor(private snackBar : MatSnackBar){
+  constructor(private snackBar : MatSnackBar , private router :Router){
     
   }
   signedUpUser: User & { confirmPassword: string } = {
@@ -27,6 +29,7 @@ export class SignUpComponent {
     phoneNumber: '',
     password: '',
     confirmPassword: '',
+    role :"visitor"
   };
 
   handleChangePassword(e: Event): void {
@@ -68,6 +71,7 @@ export class SignUpComponent {
         emailAddress: this.signedUpUser.emailAddress,
         phoneNumber: this.signedUpUser.phoneNumber,
         password: this.signedUpUser.password,
+        role : this.signedUpUser.role
       };
       if (Object.values(this.signedUpUser).filter((e) => typeof e==='string'? e.trim?.() === '':undefined).length > 0) {
         throw new Error('Please fill all the Fields');
@@ -83,33 +87,9 @@ export class SignUpComponent {
           panelClass :['snackbar-success']
         })
       }
-
+      this.router.navigate(["/signin"])
     } catch (error) {
- 
-      if (axios.isAxiosError(error)) {
-        const log :string =error.response?.data?.message ||
-        error.message ||
-        'Unknown error'
-        console.log('Axios Error : ' + log);
-        this.snackBar.open(log,'Close',{
-          duration:4000,
-          panelClass : ['snackbar-failure']
-        })
-        
-      } else if (error instanceof Error) {
-        console.log('Error' + error.message);
-        this.snackBar.open(error.message,'Close',{
-          duration:4000,
-          panelClass : ['snackbar-failure']
-        })
-      } else {
-        const log:string  = 'Unexpected Error has happened'
-        console.log(log);
-        this.snackBar.open(log,'Close',{
-          duration:4000,
-          panelClass : ['snackbar-failure']
-        })
-      }
+        apiErrorHander(this.snackBar , error)
     }
   }
 }

@@ -22,7 +22,7 @@ import lombok.Setter;
 public class Project {
     @Id
     @Column(name = "id" , nullable = false ,unique = true )
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id ;
     @Column(name = "name" , nullable = false )
     private String name;

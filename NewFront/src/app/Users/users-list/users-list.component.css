@@ -1,4 +1,8 @@
 /* Parent container for all cards */
+.createbutton{
+  margin-right: 90%;
+}
+
 .user-card-container {
     display: flex; /* Enable flexbox for layout */
     flex-wrap: wrap; /* Allow wrapping for smaller screens */

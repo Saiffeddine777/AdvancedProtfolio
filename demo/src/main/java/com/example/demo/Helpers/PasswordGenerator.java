@@ -12,7 +12,7 @@ public class PasswordGenerator {
 
     public String generatePassword (){
         StringBuilder password = new StringBuilder();
-        for (int i = 0 ; i>PASSWORD_LENGTH ; i++   ){
+        for (int i = 0 ; i<PASSWORD_LENGTH ; i++   ){
             int index = random.nextInt(CHARACTERS.length());
             password.append(CHARACTERS.charAt(index));
         }

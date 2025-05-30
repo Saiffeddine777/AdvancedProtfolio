@@ -1,1 +1,15 @@
-<p>log-in works!</p>
+<div class="contact">
+    <div class="form">
+
+         <mat-form-field >
+            <mat-label>Email</mat-label>
+            <input matInput  type="text" placeholder="Ex: johndoe@example.com" value="{{signInCredentials.emailAddress}}" (change)="handleChangeEmail($event)" />
+         </mat-form-field>
+
+         <mat-form-field >
+            <mat-label>Password</mat-label>
+            <input matInput  type="password"  placeholder="Type a Password" value="{{signInCredentials.password}}" (change)="handleChangePassword($event)"/>
+         </mat-form-field>       
+         <button mat-button class="submit-button" (click)="handleSubmitSignIn()">Submit</button>
+    </div>
+</div>

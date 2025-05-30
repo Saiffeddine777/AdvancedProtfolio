@@ -1,4 +1,5 @@
 <div class="user-card-container">
+  <button mat-button class="createbutton" (click)="navigateToTheCreateUser()">Create User</button>
     <mat-card *ngFor="let user of users" class="user-card">
       <mat-card-header class="user-card-header">
         {{ user.firstName }}
@@ -6,6 +7,6 @@
       <mat-card-content class="user-card-content">
         {{ user.emailAddress }}
       </mat-card-content>
-    <app-delete-user [id]="user.id"/>
+    <app-delete-user [id]="user.id"></app-delete-user>
     </mat-card>
   </div>

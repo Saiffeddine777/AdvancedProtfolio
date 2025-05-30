@@ -1,3 +1,6 @@
+export type Role  ="Choose"| "Admin" | "visitor"
+
+
 export type User= {
    id : number |undefined,
    firstName : string,
@@ -5,5 +8,6 @@ export type User= {
    phoneNumber :string ,
    emailAddress:string,
    occupation :string,
+   role :Role
    password : string
 }

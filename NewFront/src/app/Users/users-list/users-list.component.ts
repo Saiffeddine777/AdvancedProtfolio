@@ -8,10 +8,12 @@ import {MatCardModule} from '@angular/material/card';
 import { NgFor } from '@angular/common';
 import { DeleteUserComponent } from '../delete-user/delete-user.component';
 import { StatusType } from '../../Types/StatusType';
+import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users-list',
-  imports:[MatCardModule ,NgFor , DeleteUserComponent],
+  imports: [MatCardModule, NgFor, DeleteUserComponent, MatButtonModule],
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.css']
 })
@@ -21,10 +23,14 @@ export class UsersListComponent implements OnInit {
   fetchStatus$: Observable<StatusType>;
   fetchError$: Observable<any>;
 
-  constructor(private store: Store) {
+  constructor(private store: Store ,private router :Router) {
     this.usersList$ = this.store.select(selectUserList);
     this.fetchStatus$ = this.store.select(selectFetchStatus);
     this.fetchError$ = this.store.select(selectFetchError);
+  }
+
+  navigateToTheCreateUser (): void {
+    this.router.navigate(["/createuser"])
   }
 
   ngOnInit(): void {

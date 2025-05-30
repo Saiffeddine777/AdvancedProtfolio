@@ -1,12 +1,15 @@
 package com.example.demo.Users;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,7 +35,7 @@ public class UserController {
     }
     
     @PostMapping("/create")
-    public ResponseEntity<?> postUserController(@RequestBody UserDTO userDTO){
+    public ResponseEntity<?> postUserController(@RequestBody UserCreationDTO userDTO){
         try {
             UserDTO userDTOInserted = this.userService.createUser(userDTO);
             return  ResponseEntity.status(HttpStatus.CREATED).body(userDTOInserted);
@@ -42,10 +45,31 @@ public class UserController {
         }
     }
     @PostMapping("/signup")
-    public ResponseEntity<?> signUpUserController(@RequestBody UserDTO userDTO){
+    public ResponseEntity<?> signUpUserController(@RequestBody UserCreationDTO userDTO){
         try {
             UserDTO userDTOInserted = this.userService.signUpUserService(userDTO);
             return  ResponseEntity.status(HttpStatus.CREATED).body(userDTOInserted);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("failed to create The User" + e.getMessage());           
+        }
+    }
+
+   @PostMapping("/login")
+    public ResponseEntity<?> signInUserController(@RequestBody Map<String ,String> userDTO){
+        try {
+            Map<String , ?> userData = this.userService.logInUserService(userDTO);
+            String token = (String)  userData.get("token");
+            ResponseCookie cookie = ResponseCookie.from("jwtToken" , token)
+                  .httpOnly(true)
+                  .secure(false)
+                  .path("/")
+                  .maxAge(3600)
+                  .domain("localhost")
+                  .build();
+
+            UserDTO user  = (UserDTO) userData.get("user");
+            return  ResponseEntity.status(HttpStatus.OK).header(HttpHeaders.SET_COOKIE, cookie.toString()).body(user);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("failed to create The User" + e.getMessage());           
@@ -91,7 +115,7 @@ public class UserController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> putOneUser (@PathVariable("id") long id , @RequestBody UserDTO data){
+    public ResponseEntity<?> putOneUser (@PathVariable("id") long id , @RequestBody UserCreationDTO data){
         try {
             String result = this.userService.modifyOneUserService(id , data);
             return  ResponseEntity.status(HttpStatus.ACCEPTED).body(result);
